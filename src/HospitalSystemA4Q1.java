@@ -250,12 +250,10 @@ public class HospitalSystemA4Q1
      */
     public void displayEmptyBeds()
     {
-
         System.out.println("Finding empty beds...");
         System.out.println(ward.availableBeds());
         System.out.println("\n");
     }
-
 
     /**
      * Release a patient from the ward.
@@ -280,7 +278,9 @@ public class HospitalSystemA4Q1
         }
         else
         {
-            dropAssociation();
+            System.out.println("Does patient have doctors? 1=yes/0=no ");
+            int doc = In.nextInt();
+            if (doc == 1){ dropAssociation(); }
             patients.remove(healthNum);
             int bed = p.getBedLabel();
             ward.freeBed(bed);
