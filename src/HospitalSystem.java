@@ -263,8 +263,24 @@ public class HospitalSystem
      */
     public void releasePatient()
     {
-        Scanner consoleIn = new Scanner(System.in);
+        Scanner In = new Scanner(System.in);
 
+        System.out.print("Enter the name of the patient: ");
+        String name = In.nextLine();
+
+        System.out.print("Enter the health number of the patient: ");
+        int healthNum = In.nextInt();
+        In.nextLine();  // discard the remainder of the line
+        if (!patients.containsKey(healthNum))
+        {
+            throw new RuntimeException("Patient with the health number " + healthNum + " does not exist");
+        }
+        else
+        {
+            patients.remove(healthNum);
+            System.out.println("Removed patient " + name+ "\n");
+            // checking to make sure the the key was unique
+        }
     }
 
     /**
