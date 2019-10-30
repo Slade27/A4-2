@@ -271,14 +271,24 @@ public class HospitalSystem
         System.out.print("Enter the health number of the patient: ");
         int healthNum = In.nextInt();
         In.nextLine();  // discard the remainder of the line
+
+        Patient p = patients.get(healthNum);
+
         if (!patients.containsKey(healthNum))
         {
             throw new RuntimeException("Patient with the health number " + healthNum + " does not exist");
         }
         else
         {
+            dropAssociation();
             patients.remove(healthNum);
-            System.out.println("Removed patient " + name+ "\n");
+            int bed = p.getBedLabel();
+            ward.freeBed(bed);
+
+
+            System.out.println("\n Removed patient " + name);
+            System.out.println("Free'd bed"+ bed);
+            System.out.println("Dropped any doctor patient associations \n");
             // checking to make sure the the key was unique
         }
     }
