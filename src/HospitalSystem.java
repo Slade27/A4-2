@@ -250,7 +250,7 @@ public class HospitalSystem
      */
     public void displayEmptyBeds()
     {
-        //Scanner consoleIn = new Scanner(System.in);
+
         System.out.println("Finding empty beds...");
         System.out.println(ward.availableBeds());
         System.out.println("\n");
@@ -263,8 +263,7 @@ public class HospitalSystem
      */
     public void releasePatient()
     {
-        // TODO: implement stub
-        System.out.println("TODO: method not complete");
+        Scanner consoleIn = new Scanner(System.in);
 
     }
 
