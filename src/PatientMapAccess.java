@@ -14,9 +14,9 @@ public class PatientMapAccess
     private static TreeMap<Integer, Patient> patients = new TreeMap<Integer, Patient>();
 
     /**
-     * Return the dictionary that maps names to customers
+     * Return the dictionary that maps names to = Patients
      *
-     * @return the dictionary that maps names to customers
+     * @return the dictionary that maps names to Patients
      */
     public static TreeMap<Integer, Patient> patients()
     {
