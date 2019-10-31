@@ -29,6 +29,7 @@ public class DoctorMapAccess
             {
                 dictionary = new TreeMap<String,Doctor>();
             }
+            System.out.println("HEY YOU ARE DOING IT RIGHT");
             return dictionary;
         }
 

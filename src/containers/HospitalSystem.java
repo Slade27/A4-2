@@ -38,7 +38,8 @@ public class HospitalSystem
      */
     public HospitalSystem() {
 
-        patients = new TreeMap<Integer, Patient>();
+        patients = PatientMapAccess.dictionary();
+        //patients = new TreeMap<Integer, Patient>();
         //doctors = new TreeMap<String, Doctor>();
         doctors = DoctorMapAccess.dictionary();
 
@@ -56,7 +57,8 @@ public class HospitalSystem
         System.out.print("Enter the integer label of the last bed: ");
         int lastBedNum = consoleIn.nextInt();
         consoleIn.nextLine();
-        ward = new Ward(name, firstBedNum, lastBedNum);
+        //ward = new Ward(name, firstBedNum, lastBedNum);
+        ward = WardAccess.ward(name,firstBedNum,lastBedNum);
     }
 
     /**
@@ -323,7 +325,6 @@ public class HospitalSystem
                 else if (task == 2)
                     sys.addPatient();
                 else if (task == 3)
-
                     sys.addDoctor();
                 else if (task == 4)
                     sys.assignDoctorToPatient();
