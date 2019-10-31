@@ -1,6 +1,7 @@
 package containers;
 
 import commands.AssignDoctor;
+import commands.EmptyBeds;
 import commands.NewDoctor;
 import entities.Doctor;
 import entities.Patient;
@@ -250,8 +251,7 @@ public class HospitalSystem
     public void displayEmptyBeds()
     {
         System.out.println("Finding empty beds...");
-        System.out.println(ward.availableBeds());
-        System.out.println("\n");
+        EmptyBeds.displayEmptyBeds(ward);
     }
 
     /**
