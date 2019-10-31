@@ -159,9 +159,9 @@ public class HospitalSystem
         consoleIn.nextLine();  // discard the remainder of the line
 
         Patient p = patients.get(healthNumber);
-        if (p == null)
+        if (p == null){
             throw new RuntimeException("There is no patient with health number "
-                    + healthNumber);
+                    + healthNumber);}
 
         if (p.getBedLabel() != -1)
             throw new RuntimeException(" entities.Patient " + p
