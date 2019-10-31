@@ -37,5 +37,8 @@ public class DropDoctor extends CommandStatus
 
         p.removeDoctor(name);
         d.removePatient(healthNum);
+
+        err.wasSuccessful(); // Set to True
+        err.getErrorMessage();
     }
 }
