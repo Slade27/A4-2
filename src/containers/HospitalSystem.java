@@ -1,5 +1,6 @@
 package containers;
 
+import commands.AssignDoctor;
 import commands.NewDoctor;
 import entities.Doctor;
 import entities.Patient;
@@ -123,22 +124,24 @@ public class HospitalSystem
         int healthNumber = consoleIn.nextInt();
         consoleIn.nextLine();  // discard the remainder of the line
 
-        Patient p = patients.get(healthNumber);
-        if (p == null)
-            throw new RuntimeException("There is no patient with health number "
-                    + healthNumber);
+//        Patient p = patients.get(healthNumber);
+//        if (p == null)
+//            throw new RuntimeException("There is no patient with health number "
+//                    + healthNumber);
 
         System.out.println("Getting entities.Doctor information...");
         System.out.print("Enter the name of the doctor: ");
         String name = consoleIn.nextLine();
-        Doctor d = doctors.get(name);
-        if (d == null)
-            throw new RuntimeException("There is no doctor with name " + name);
-        else
-        {
-            p.addDoctor(d);
-            d.addPatient(p);
-        }
+
+        AssignDoctor.assignDoctorToPatient(healthNumber,name);
+//        Doctor d = doctors.get(name);
+//        if (d == null)
+//            throw new RuntimeException("There is no doctor with name " + name);
+//        else
+//        {
+//            p.addDoctor(d);
+//            d.addPatient(p);
+//        }
     }
 
     /**

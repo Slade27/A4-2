@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class AssignDoctor extends CommandStatus
 {
-    public void assignDoctorToPatient(int healthNumber, String name)
+    public static void assignDoctorToPatient(int healthNumber, String name)
     {
         Patient p = (Patient) PatientMapAccess.dictionary().get(healthNumber);
         if (p == null)
