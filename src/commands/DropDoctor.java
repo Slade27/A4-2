@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class DropDoctor extends CommandStatus
 {
-    public void dropAssociation(int healthNum,String name)
+    public static void dropAssociation(int healthNum,String name)
     {
         Patient p = (Patient) PatientMapAccess.dictionary().get(healthNum);
         if (p == null)
