@@ -1,3 +1,5 @@
+package commands;
+
 import commands.CommandStatus;
 
 import java.util.Scanner;
@@ -16,11 +18,11 @@ public class NewDoctor extends CommandStatus
     {
         Scanner consoleIn = new Scanner(System.in);
 
-        System.out.println("Getting Patient information...");
+        System.out.println("Getting entities.Patient information...");
         System.out.print("Enter the name of the doctor: ");
         String name = consoleIn.nextLine();
         if (doctors.containsKey(name))
-            throw new RuntimeException("Doctor not added as there already "
+            throw new RuntimeException("entities.Doctor not added as there already "
                     + "is a doctor with the name " + name);
 
         System.out.print("Is the doctor a surgeon? (yes or no)");

@@ -1,8 +1,16 @@
+package containers;
+
+import entities.Doctor;
+
 import java.util.TreeMap;
 
 public class DoctorMapAccess
 {
-        /**
+
+    /** The dictionary for doctors. */
+    private static TreeMap dictionary = new TreeMap<String, Doctor>();
+
+    /**
          * Private constructor to ensure that no instance of this class
          is created.
          */
@@ -10,21 +18,18 @@ public class DoctorMapAccess
         {
         }
 
-        /** The dictionary for doctors. */
-        private static TreeMap<String, Doctor> doctors = new TreeMap<String, Doctor>();
-
         /**
          * Return the dictionary that maps names to Doctors
          *
          * @return the dictionary that maps names to Doctors
          */
-        public static TreeMap<String, Doctor> doctors()
+        public static TreeMap dictionary()
         {
-            if (doctors == null)
+            if (dictionary == null)
             {
-                doctors = new TreeMap<String, Doctor>();
+                dictionary = new TreeMap<String,Doctor>();
             }
-            return doctors;
+            return dictionary;
         }
 
 }

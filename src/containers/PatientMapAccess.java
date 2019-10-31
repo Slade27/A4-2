@@ -1,7 +1,12 @@
+package containers;
+import entities.Patient;
 import java.util.TreeMap;
 
 public class PatientMapAccess
 {
+    /** The dictionary for doctors. */
+    private static TreeMap<Integer,Patient> dictionary;
+
     /**
      * Private constructor to ensure that no instance of this class
      is created.
@@ -10,21 +15,18 @@ public class PatientMapAccess
     {
     }
 
-    /** The dictionary for doctors. */
-    private static TreeMap<Integer, Patient> patients = new TreeMap<Integer, Patient>();
-
     /**
      * Return the dictionary that maps names to = Patients
      *
      * @return the dictionary that maps names to Patients
      */
-    public static TreeMap<Integer, Patient> patients()
+    public static TreeMap dictionary()
     {
-        if (patients == null)
+        if (dictionary == null)
         {
-            patients = new TreeMap<Integer, Patient>();
+            dictionary = new TreeMap<Integer, Patient>();
         }
-        return patients;
+        return dictionary;
     }
 
 }
