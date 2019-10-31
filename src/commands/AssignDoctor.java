@@ -10,7 +10,20 @@ import java.util.Scanner;
 
 public class AssignDoctor extends CommandStatus
 {
+    public void assignDoctorToPatient(int healthNumber, String name)
+    {
+        Patient p = (Patient) PatientMapAccess.dictionary().get(healthNumber);
+        if (p == null)
+            throw new RuntimeException("There is no patient with health number "
+                    + healthNumber);
 
- //Patient p = PatientMapAccess.dictionary().get(healthnum);
-
+        Doctor d = (Doctor) DoctorMapAccess.dictionary().get(name);
+        if (d == null)
+            throw new RuntimeException("There is no doctor with name " + name);
+        else
+        {
+            p.addDoctor(d);
+            d.addPatient(p);
+        }
+    }
 }
