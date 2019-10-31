@@ -16,7 +16,7 @@ public class WardAccess
     /**
      * Return the containers.Ward created
      *
-     * @return the ward
+     * @return the ward created
      */
     public static Ward ward(String name,int minBedLabel ,int  maxBedLabel)
     {

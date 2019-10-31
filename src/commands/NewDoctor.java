@@ -9,20 +9,13 @@ import java.util.Scanner;
 
 public class NewDoctor extends CommandStatus
 {
-    public void addDoctor()
+    public static void addDoctor(String name, String response)
     {
-        Scanner consoleIn = new Scanner(System.in);
-
-        System.out.println("Getting entities.Patient information...");
-        System.out.print("Enter the name of the doctor: ");
-        String name = consoleIn.nextLine();
         if(DoctorMapAccess.dictionary().containsKey(name))
         //if (doctors.containsKey(name))
             throw new RuntimeException("entities.Doctor not added as there already "
                     + "is a doctor with the name " + name);
 
-        System.out.print("Is the doctor a surgeon? (yes or no)");
-        String response = consoleIn.nextLine();
         Doctor d;
         if (response.charAt(0) == 'y' || response.charAt(0) == 'Y')
             d = new Surgeon(name);

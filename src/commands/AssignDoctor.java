@@ -11,6 +11,6 @@ import java.util.Scanner;
 public class AssignDoctor extends CommandStatus
 {
 
- Patient p = PatientMapAccess.dictionary().get(healthnum);
+ //Patient p = PatientMapAccess.dictionary().get(healthnum);
 
 }
