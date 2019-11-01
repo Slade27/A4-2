@@ -1,3 +1,7 @@
+//Shea Slade
+//sds266
+//11235049
+
 package containers;
 
 import commands.*;
@@ -5,6 +9,7 @@ import entities.Doctor;
 import entities.Patient;
 import entities.Surgeon;
 import commands.NewDoctor;
+import userInterfaces.InputOutputInterface;
 
 import java.util.TreeMap;
 import java.util.Scanner;
@@ -33,8 +38,15 @@ public class HospitalSystem
 
     /**
      * Initialize an instance of the hospital ward
-     * relies on user-input to get the relavent information
+     * relies on user-input to get the relevent information
      */
+
+    private InputOutputInterface ioInterface;
+
+    /**
+     * Initialize another I/O option
+     */
+
     public HospitalSystem() {
 
         patients = PatientMapAccess.dictionary();
@@ -46,8 +58,8 @@ public class HospitalSystem
         Scanner consoleIn = new Scanner(System.in);
 
         System.out.println("Initializing the system...");
-        System.out.println("Getting containers.Ward information...");
-        System.out.print("Enter the name of the containers.Ward: ");
+        System.out.println("Getting Ward information...");
+        System.out.print("Enter the name of the Ward: ");
         String name = consoleIn.nextLine();
         System.out.print("Enter the integer label of the first bed: ");
         int firstBedNum = consoleIn.nextInt();
