@@ -7,10 +7,10 @@ package containers;
 import commands.*;
 import entities.Doctor;
 import entities.Patient;
-import entities.Surgeon;
 import commands.NewDoctor;
+import userInterfaces.AbstractConsoleIO;
 import userInterfaces.AbstractDialogIO;
-import userInterfaces.ConsoleIO;
+import userInterfaces.AbstractConsoleIO;
 import userInterfaces.InputOutputInterface;
 
 import javax.swing.*;
@@ -80,6 +80,22 @@ public class HospitalSystem
         if (choice == 0)
         {
             System.out.println("Console");
+            ioInterface = new AbstractConsoleIO() {
+                @Override
+                public String readString(String prompt) {
+                    return null;
+                }
+
+                @Override
+                public int readInt(String prompt) {
+                    return 0;
+                }
+
+                @Override
+                public void outputString(String outString) {
+
+                }
+            };
         }
         else
             {
@@ -347,27 +363,15 @@ public class HospitalSystem
                 "Release patient","Drop doctor patient","System state"};
 
         //Scanner consoleIn = new Scanner(System.in);
-        //int task = -1;
+        int task = -1;
 
         HospitalSystem sys = new HospitalSystem();
-        int task = sys.ioInterface.readChoice(options);
+        //int task = sys.ioInterface.readChoice(options);
 
         try{
             while(task != 1) {
-                System.out.print("Please select an operation to do"
-                        + "\n1: quit"
-                        + "\n2: add a new patient"
-                        + "\n3: add a new doctor"
-                        + "\n4: assign a doctor to a patient"
-                        + "\n5: display the empty beds of the ward"
-                        + "\n6: assign a patient a bed"
-                        + "\n7: release a patient"
-                        + "\n8: drop doctor-patient association"
-                        + "\n9: display current system state"
-                        + "\nEnter the number of your selection: ");
 
-                //task = consoleIn.nextInt();
-                //consoleIn.nextLine();
+                task = sys.ioInterface.readChoice(options);
 
                 if (task == 1)
                     sys.systemState();
@@ -392,8 +396,6 @@ public class HospitalSystem
             }
         } catch (RuntimeException e) {
             System.out.println(e.getMessage());
-        } finally {
-            //consoleIn.close();
         }
     }
 }
