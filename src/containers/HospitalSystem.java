@@ -10,6 +10,7 @@ import entities.Patient;
 import entities.Surgeon;
 import commands.NewDoctor;
 import userInterfaces.AbstractDialogIO;
+import userInterfaces.ConsoleIO;
 import userInterfaces.InputOutputInterface;
 
 import javax.swing.*;
@@ -72,11 +73,34 @@ public class HospitalSystem
 
             }
         };
+
         String[] s = {"Console", "Dialogue"};
         int choice = box.readChoice(s);
         System.out.println("You picked "+ choice);
-        if (choice == 0){System.out.println("CANCELED");}
-        else {System.out.println("Choo");}
+        if (choice == 0)
+        {
+            System.out.println("Console");
+        }
+        else
+            {
+                System.out.println("Dialogue");
+                ioInterface = new AbstractDialogIO() {
+                    @Override
+                    public String readString(String prompt) {
+                        return null;
+                    }
+
+                    @Override
+                    public int readInt(String prompt) {
+                        return 0;
+                    }
+
+                    @Override
+                    public void outputString(String outString) {
+
+                    }
+                };
+            }
 
 
         // get the ward information
@@ -318,11 +342,15 @@ public class HospitalSystem
      */
     public static void main(String[] args)
     {
+        String[] options = {"exit","quit","New patient","New doctor",
+                "Assign doctor to patient","Empty beds","Assign to bed",
+                "Release patient","Drop doctor patient","System state"};
 
-        Scanner consoleIn = new Scanner(System.in);
-        int task = -1;
+        //Scanner consoleIn = new Scanner(System.in);
+        //int task = -1;
 
         HospitalSystem sys = new HospitalSystem();
+        int task = sys.ioInterface.readChoice(options);
 
         try{
             while(task != 1) {
@@ -338,8 +366,8 @@ public class HospitalSystem
                         + "\n9: display current system state"
                         + "\nEnter the number of your selection: ");
 
-                task = consoleIn.nextInt();
-                consoleIn.nextLine();
+                //task = consoleIn.nextInt();
+                //consoleIn.nextLine();
 
                 if (task == 1)
                     sys.systemState();
@@ -365,7 +393,7 @@ public class HospitalSystem
         } catch (RuntimeException e) {
             System.out.println(e.getMessage());
         } finally {
-            consoleIn.close();
+            //consoleIn.close();
         }
     }
 }
