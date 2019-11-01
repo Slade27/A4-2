@@ -9,12 +9,21 @@ import java.util.Scanner;
 
 public class NewDoctor extends CommandStatus
 {
+    /**
+     * Takes in Doctor namd and type and adds the doctor to the dictionary
+     * @param name = The name of the Doctor
+     * @param response = the type of doctor
+     */
     public static void addDoctor(String name, String response)
     {
+        CommandStatus err = new CommandStatus();
+
         if(DoctorMapAccess.dictionary().containsKey(name))
-        //if (doctors.containsKey(name))
-            throw new RuntimeException("entities.Doctor not added as there already "
-                    + "is a doctor with the name " + name);
+        {
+            err.errorMessage = "entities.Doctor not added as there already "
+                    + "is a doctor with the name " + name;
+            err.getErrorMessage();
+        }
 
         Doctor d;
         if (response.charAt(0) == 'y' || response.charAt(0) == 'Y')

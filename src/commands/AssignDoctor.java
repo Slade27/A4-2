@@ -10,6 +10,11 @@ import java.util.Scanner;
 
 public class AssignDoctor extends CommandStatus
 {
+    /**
+     * Takes in Doctor and Patient, then assigns the Patient to doctor
+     * @param healthNumber = The health number of the patient
+     * @param name = the name of the Doctor
+     */
     public static void assignDoctorToPatient(int healthNumber, String name)
     {
         Patient p = (Patient) PatientMapAccess.dictionary().get(healthNumber);

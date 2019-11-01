@@ -10,10 +10,15 @@ import java.util.Scanner;
 
 public class DropDoctor extends CommandStatus
 {
-
+    /**
+     * Takes in Doctor namd and type and adds the doctor to the dictionary
+     * @param healthNum = The health number of the Patient
+     * @param name = The doctor to be dropped
+     */
     public static void dropAssociation(int healthNum,String name)
     {
         CommandStatus err = new CommandStatus();
+
         Patient p = (Patient) PatientMapAccess.dictionary().get(healthNum);
         if (p == null){
             err.errorMessage = "There is no patient with health number \"\n" + healthNum;
