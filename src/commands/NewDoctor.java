@@ -4,8 +4,9 @@ import commands.CommandStatus;
 import containers.DoctorMapAccess;
 import entities.Doctor;
 import entities.Surgeon;
-
-import java.util.Scanner;
+//Shea Slade
+//sds266
+//11235049
 
 public class NewDoctor extends CommandStatus
 {
@@ -20,8 +21,8 @@ public class NewDoctor extends CommandStatus
 
         if(DoctorMapAccess.dictionary().containsKey(name))
         {
-            err.errorMessage = "entities.Doctor not added as there already "
-                    + "is a doctor with the name " + name;
+            err.errorMessage = ("entities.Doctor not added as there already "
+                    + "is a doctor with the name " + name);
             err.getErrorMessage();
         }
 
@@ -37,9 +38,9 @@ public class NewDoctor extends CommandStatus
         if (sameNumberDoctor != null)
         {
             DoctorMapAccess.dictionary().put(name, sameNumberDoctor);
-            //doctors.put(name, sameNumberDoctor); // put the original doctor back
-            throw new RuntimeException("Name in the doctor dictionary even though "
+            err.errorMessage = ("Name in the doctor dictionary even though "
                     + "containsKey failed.  Name "  + name + " not entered.");
+            err.getErrorMessage();
         }
     }
 }

@@ -9,8 +9,11 @@ import entities.Doctor;
 import entities.Patient;
 import entities.Surgeon;
 import commands.NewDoctor;
+import userInterfaces.AbstractDialogIO;
 import userInterfaces.InputOutputInterface;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
 import java.util.TreeMap;
 import java.util.Scanner;
 import java.util.Collection;
@@ -42,7 +45,6 @@ public class HospitalSystem
      */
 
     private InputOutputInterface ioInterface;
-
     /**
      * Initialize another I/O option
      */
@@ -53,6 +55,29 @@ public class HospitalSystem
         //patients = new TreeMap<Integer, Patient>();
         //doctors = new TreeMap<String, Doctor>();
         doctors = DoctorMapAccess.dictionary();
+
+        AbstractDialogIO box = new AbstractDialogIO() {
+            @Override
+            public String readString(String prompt) {
+                return null;
+            }
+
+            @Override
+            public int readInt(String prompt) {
+                return 0;
+            }
+
+            @Override
+            public void outputString(String outString) {
+
+            }
+        };
+        String[] s = {"Console", "Dialogue"};
+        int choice = box.readChoice(s);
+        System.out.println("You picked "+ choice);
+        if (choice == 0){System.out.println("CANCELED");}
+        else {System.out.println("Choo");}
+
 
         // get the ward information
         Scanner consoleIn = new Scanner(System.in);
@@ -246,6 +271,9 @@ public class HospitalSystem
         EmptyBeds.displayEmptyBeds(ward);
     }
 
+
+
+
     /**
      * Release a patient from the ward.
      * Method is just a stub, needs to be implemented
@@ -290,6 +318,7 @@ public class HospitalSystem
      */
     public static void main(String[] args)
     {
+
         Scanner consoleIn = new Scanner(System.in);
         int task = -1;
 
