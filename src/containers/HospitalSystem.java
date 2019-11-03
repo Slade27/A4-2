@@ -88,7 +88,7 @@ public class HospitalSystem
 
 
         // get the ward information
-        Scanner consoleIn = new Scanner(System.in);
+        //Scanner consoleIn = new Scanner(System.in);
 
         System.out.println("Initializing the system...");
         System.out.println("Getting Ward information...");
@@ -114,16 +114,19 @@ public class HospitalSystem
      */
     public void addPatient()
     {
-        Scanner consoleIn = new Scanner(System.in);
+        //Scanner consoleIn = new Scanner(System.in);
 
         System.out.println("Getting entities.Patient information...");
-        System.out.print("Enter the name of the patient: ");
-        String name = consoleIn.nextLine();
+        //System.out.print("Enter the name of the patient: ");
 
-        System.out.print("Enter the health number of the patient: ");
+        String name = ioInterface.readInt("Enter the name of the patient: ");
+        //String name = consoleIn.nextLine();
 
-        int healthNum = consoleIn.nextInt();
-        consoleIn.nextLine();  // discard the remainder of the line
+
+        //System.out.print("Enter the health number of the patient: ");
+        int healthNum = ioInterface.readString("Enter the health number of the patient: ");
+        //int healthNum = consoleIn.nextInt();
+        //consoleIn.nextLine();  // discard the remainder of the line
         if (patients.containsKey(healthNum))
         {
             throw new RuntimeException("entities.Patient with the health number " + healthNum + " already exsists");
@@ -149,14 +152,16 @@ public class HospitalSystem
      */
     public void addDoctor()
     {
-        Scanner consoleIn = new Scanner(System.in);
+        //Scanner consoleIn = new Scanner(System.in);
 
         System.out.println("Getting entities.Patient information...");
-        System.out.print("Enter the name of the doctor: ");
-        String name = consoleIn.nextLine();
+        //System.out.print("Enter the name of the doctor: ");
+        String name = ioInterface.readInt("Enter the name of the doctor: ");
+        //String name = consoleIn.nextLine();
 
         System.out.print("Is the doctor a surgeon? (yes or no)");
-        String response = consoleIn.nextLine();
+        String response = ioInterface.readInt("Is the doctor a surgeon? (yes or no)");
+        //String response = consoleIn.nextLine();
         NewDoctor.addDoctor(name,response);
 
     }
@@ -166,18 +171,22 @@ public class HospitalSystem
      */
     public void assignDoctorToPatient()
     {
-        Scanner consoleIn = new Scanner(System.in);
+        //Scanner consoleIn = new Scanner(System.in);
 
         System.out.println("Assigning a new entities.Doctor-entities.Patient Association...");
         System.out.println("Getting entities.Patient information...");
-        System.out.print("Enter the health number of the patient: ");
-        int healthNumber = consoleIn.nextInt();
-        consoleIn.nextLine();  // discard the remainder of the line
+        //System.out.print("Enter the health number of the patient: ");
+
+        int healthNumber = ioInterface.readString("Enter the health number of the patient: ");
+        //int healthNumber = consoleIn.nextInt();
+        //consoleIn.nextLine();  // discard the remainder of the line
 
 
         System.out.println("Getting entities.Doctor information...");
-        System.out.print("Enter the name of the doctor: ");
-        String name = consoleIn.nextLine();
+        //System.out.print("Enter the name of the doctor: ");
+
+        String name = ioInterface.readInt("Enter the name of the doctor: ");
+        //String name = consoleIn.nextLine();
 
         AssignDoctor.assignDoctorToPatient(healthNumber, name);
     }
