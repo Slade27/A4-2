@@ -43,4 +43,18 @@ public abstract class AbstractDialogIO implements InputOutputInterface {
 
         return stIn;
     }
+
+
+    /**
+     *
+     * @param prompt A string instructing user to enter information
+     * @return a String of information
+     */
+    public String readInt(String prompt)
+    {
+        // Nothing was entered
+
+        return JOptionPane.showInputDialog(prompt);
+
+    }
 }

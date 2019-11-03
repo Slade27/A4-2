@@ -54,16 +54,6 @@ public class HospitalSystem
 
         AbstractDialogIO box = new AbstractDialogIO() {
             @Override
-            public int readString(String prompt) {
-                return 0;
-            }
-
-            @Override
-            public int readInt(String prompt) {
-                return 0;
-            }
-
-            @Override
             public void outputString(String outString) {
 
             }
@@ -80,11 +70,6 @@ public class HospitalSystem
 
             ioInterface = new AbstractConsoleIO() {
                 @Override
-                public int readInt(String prompt) {
-                    return 0;
-                }
-
-                @Override
                 public void outputString(String outString) {
 
                 }
@@ -94,11 +79,6 @@ public class HospitalSystem
             {
                 System.out.println("Dialogue");
                 ioInterface = new AbstractDialogIO() {
-                    @Override
-                    public int readInt(String prompt) {
-                        return 0;
-                    }
-
                     @Override
                     public void outputString(String outString) {
 
@@ -112,15 +92,18 @@ public class HospitalSystem
 
         System.out.println("Initializing the system...");
         System.out.println("Getting Ward information...");
-        System.out.print("Enter the name of the Ward: ");
-        String name = consoleIn.nextLine();
+        //System.out.print("Enter the name of the Ward: ");
+        String name = ioInterface.readInt("Enter the Name of the ward");
+        //String name = consoleIn.nextLine();
         System.out.print("Enter the integer label of the first bed: ");
-        int firstBedNum = consoleIn.nextInt();
-        consoleIn.nextLine();
+        int firstBedNum = ioInterface.readString("Enter the integer label of the first bed: ");
+        //int firstBedNum = consoleIn.nextInt();
+        //consoleIn.nextLine();
 
-        System.out.print("Enter the integer label of the last bed: ");
-        int lastBedNum = consoleIn.nextInt();
-        consoleIn.nextLine();
+        //System.out.print("Enter the integer label of the last bed: ");
+        int lastBedNum = ioInterface.readString("Enter the integer label of the last bed: ");
+        //int lastBedNum = consoleIn.nextInt();
+        //consoleIn.nextLine();
         //ward = new Ward(name, firstBedNum, lastBedNum);
         ward = WardAccess.ward(name,firstBedNum,lastBedNum);
     }
@@ -191,24 +174,12 @@ public class HospitalSystem
         int healthNumber = consoleIn.nextInt();
         consoleIn.nextLine();  // discard the remainder of the line
 
-//        Patient p = patients.get(healthNumber);
-//        if (p == null)
-//            throw new RuntimeException("There is no patient with health number "
-//                    + healthNumber);
 
         System.out.println("Getting entities.Doctor information...");
         System.out.print("Enter the name of the doctor: ");
         String name = consoleIn.nextLine();
 
-        AssignDoctor.assignDoctorToPatient(healthNumber,name);
-//        Doctor d = doctors.get(name);
-//        if (d == null)
-//            throw new RuntimeException("There is no doctor with name " + name);
-//        else
-//        {
-//            p.addDoctor(d);
-//            d.addPatient(p);
-//        }
+        AssignDoctor.assignDoctorToPatient(healthNumber, name);
     }
 
     /**
