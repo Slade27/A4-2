@@ -196,13 +196,15 @@ public class HospitalSystem
      */
     public void assignBed()
     {
-        Scanner consoleIn = new Scanner(System.in);
+        //Scanner consoleIn = new Scanner(System.in);
 
         System.out.println("Assigning a entities.Patient to a Bed...");
         System.out.println("Getting entities.Patient information...");
         System.out.print("Enter the health number of the patient: ");
-        int healthNumber = consoleIn.nextInt();
-        consoleIn.nextLine();  // discard the remainder of the line
+        int healthNumber = ioInterface.readString("Enter the health number of the patient: ");
+
+        //int healthNumber = consoleIn.nextInt();
+        //consoleIn.nextLine();  // discard the remainder of the line
 
         Patient p = patients.get(healthNumber);
         if (p == null){
@@ -213,9 +215,11 @@ public class HospitalSystem
             throw new RuntimeException(" entities.Patient " + p
                     + " is already in a bed so cannot be assigned a new bed");
 
-        System.out.print("Enter the bed number for the patient: ");
-        int bedNum = consoleIn.nextInt();
-        consoleIn.nextLine();  // discard the remainder of the line
+        //System.out.print("Enter the bed number for the patient: ");
+        //int bedNum = consoleIn.nextInt();
+        int bedNum = ioInterface.readString("Enter the bed number for the patient: ");
+        //consoleIn.nextLine();  // discard the remainder of the line
+
         if (bedNum < ward.getMinBedLabel() || bedNum > ward.getMaxBedLabel())
             throw new RuntimeException("Bed label " + bedNum + " is not valid, as "
                     + "the value must be between " + ward.getMinBedLabel()
@@ -230,17 +234,19 @@ public class HospitalSystem
      */
     public void dropAssociation()
     {
-        Scanner consoleIn = new Scanner(System.in);
+        //Scanner consoleIn = new Scanner(System.in);
 
         System.out.println("Dropping a new entities.Doctor-entities.Patient Association...");
         System.out.println("Getting entities.Patient information...");
-        System.out.print("Enter the health number of the patient: ");
-        int healthNumber = consoleIn.nextInt();
-        consoleIn.nextLine();  // discard the remainder of the line
+        //System.out.print("Enter the health number of the patient: ");
+        int healthNumber = ioInterface.readString("Enter the health number of the patient: ");
+        //int healthNumber = consoleIn.nextInt();
+        //consoleIn.nextLine();  // discard the remainder of the line
 
         System.out.println("Getting entities.Doctor information...");
         System.out.print("Enter the name of the doctor: ");
-        String name = consoleIn.nextLine();
+        String name = ioInterface.readInt("Enter the name of the doctor: ");
+        //String name = consoleIn.nextLine();
 
         DropDoctor.dropAssociation(healthNumber,name);
     }
@@ -289,14 +295,16 @@ public class HospitalSystem
      */
     public void releasePatient()
     {
-        Scanner In = new Scanner(System.in);
+        //Scanner In = new Scanner(System.in);
 
         System.out.print("Enter the name of the patient: ");
-        String name = In.nextLine();
+        String name = ioInterface.readInt("Enter the name of the patient");
+        //String name = In.nextLine();
 
-        System.out.print("Enter the health number of the patient: ");
-        int healthNum = In.nextInt();
-        In.nextLine();  // discard the remainder of the line
+        //System.out.print("Enter the health number of the patient: ");
+        int healthNum = ioInterface.readString("Enter the Health umber of the patient");
+        //int healthNum = In.nextInt();
+        //In.nextLine();  // discard the remainder of the line
 
         Patient p = patients.get(healthNum);
 
@@ -306,8 +314,9 @@ public class HospitalSystem
         }
         else
         {
-            System.out.println("Does patient have doctors? 1=yes/0=no ");
-            int doc = In.nextInt();
+            //System.out.println("Does patient have doctors? 1=yes/0=no ");
+            //int doc = In.nextInt();
+            int doc = ioInterface.readString("Does patient have doctors? 1=yes/0=no ");
             if (doc == 1){ dropAssociation(); }
             patients.remove(healthNum);
             int bed = p.getBedLabel();
