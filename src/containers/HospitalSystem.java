@@ -10,11 +10,8 @@ import entities.Patient;
 import commands.NewDoctor;
 import userInterfaces.AbstractConsoleIO;
 import userInterfaces.AbstractDialogIO;
-import userInterfaces.AbstractConsoleIO;
 import userInterfaces.InputOutputInterface;
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
 import java.util.TreeMap;
 import java.util.Scanner;
 import java.util.Collection;
@@ -53,14 +50,12 @@ public class HospitalSystem
     public HospitalSystem() {
 
         patients = PatientMapAccess.dictionary();
-        //patients = new TreeMap<Integer, Patient>();
-        //doctors = new TreeMap<String, Doctor>();
         doctors = DoctorMapAccess.dictionary();
 
         AbstractDialogIO box = new AbstractDialogIO() {
             @Override
-            public String readString(String prompt) {
-                return null;
+            public int readString(String prompt) {
+                return 0;
             }
 
             @Override
@@ -76,16 +71,14 @@ public class HospitalSystem
 
         String[] s = {"Console", "Dialogue"};
         int choice = box.readChoice(s);
-        System.out.println("You picked "+ choice);
+
+        //System.out.println("You picked "+ choice);
+
         if (choice == 0)
         {
             System.out.println("Console");
-            ioInterface = new AbstractConsoleIO() {
-                @Override
-                public String readString(String prompt) {
-                    return null;
-                }
 
+            ioInterface = new AbstractConsoleIO() {
                 @Override
                 public int readInt(String prompt) {
                     return 0;
@@ -101,11 +94,6 @@ public class HospitalSystem
             {
                 System.out.println("Dialogue");
                 ioInterface = new AbstractDialogIO() {
-                    @Override
-                    public String readString(String prompt) {
-                        return null;
-                    }
-
                     @Override
                     public int readInt(String prompt) {
                         return 0;
@@ -150,6 +138,7 @@ public class HospitalSystem
         String name = consoleIn.nextLine();
 
         System.out.print("Enter the health number of the patient: ");
+
         int healthNum = consoleIn.nextInt();
         consoleIn.nextLine();  // discard the remainder of the line
         if (patients.containsKey(healthNum))
@@ -358,22 +347,28 @@ public class HospitalSystem
      */
     public static void main(String[] args)
     {
-        String[] options = {"exit","quit","New patient","New doctor",
+
+
+        String[] options = {"Pick an Option","quit","New patient","New doctor",
                 "Assign doctor to patient","Empty beds","Assign to bed",
                 "Release patient","Drop doctor patient","System state"};
 
-        //Scanner consoleIn = new Scanner(System.in);
         int task = -1;
+        int input;
 
         HospitalSystem sys = new HospitalSystem();
-        //int task = sys.ioInterface.readChoice(options);
+        input = sys.ioInterface.readString("Enter an Integer");
+        System.out.println( "Here is the input --" + (input));
 
         try{
             while(task != 1) {
 
                 task = sys.ioInterface.readChoice(options);
+                System.out.println("This is the task" + task);
 
-                if (task == 1)
+                if(task == 0)
+                    sys.systemState();
+                else if (task == 1)
                     sys.systemState();
                 else if (task == 2)
                     sys.addPatient();

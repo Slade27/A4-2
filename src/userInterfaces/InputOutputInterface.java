@@ -11,7 +11,7 @@ public interface InputOutputInterface {
      * @param prompt the string to be displayed as a prompt
      * @return the String read
      */
-    String readString(String prompt);
+    int readString(String prompt);
 
     /**
      * Display a prompt and read the int entered.
@@ -19,7 +19,7 @@ public interface InputOutputInterface {
      * @param prompt the string to be displayed as a prompt
      * @return the int read
      */
-    int readInt(String prompt);
+    String readInt(String prompt);
 
     /**
      * Display the list of options and read an int that is the index of one of the options. The

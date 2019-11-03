@@ -1,6 +1,6 @@
 package userInterfaces;
 
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 /**
  * A partially implemented class with the input and output methods to read a String, read an int,
@@ -30,5 +30,17 @@ public abstract class AbstractDialogIO implements InputOutputInterface {
                 return i;
         JOptionPane.showMessageDialog(null, "Illegal choice: " + selection + "\n");
         return readChoice(options);
+    }
+
+    public int readString(String prompt)
+    {
+        String in = JOptionPane.showInputDialog(prompt);
+        if(in == null)
+        {
+            return 0; // Nothing was entered
+        }
+        int stIn = Integer.parseInt(in);
+
+        return stIn;
     }
 }
